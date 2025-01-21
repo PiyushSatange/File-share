@@ -1,0 +1,20 @@
+{
+  "name": "file-sharing-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-start": "nodemon index",
+    "start": "node index"
+  },
+  "author": "Piyush Satange",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1692.0",
+    "express": "^4.21.2"
+  }
+}
