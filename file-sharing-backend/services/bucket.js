@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
+const { S3Client, GetObjectCommand, PutObjectCommand } = require("@aws-sdk/client-s3");
 const {getSignedUrl} = require("@aws-sdk/s3-request-presigner")
 
 const client = new S3Client(
@@ -11,6 +11,17 @@ const client = new S3Client(
         }
     }
 )
+
+async function uploadFile(){
+    const command = new PutObjectCommand(
+        {
+            Bucket: "file-sharing-bucket-ps",
+            Key: "folder/demo-name.png",
+        }
+    )
+    const url = await getSignedUrl(client, command);
+    return url;
+}
 
 async function getObjectUrl(key){
     const command = new GetObjectCommand(
@@ -24,5 +35,6 @@ async function getObjectUrl(key){
 }
 
 module.exports = {
-    getObjectUrl
+    getObjectUrl,
+    uploadFile
 }
